@@ -1,12 +1,13 @@
 """
 This script reads a list of people and their courses, and writes a greeting for each person who is taking a specific course to a text file.
 """
-# List of people with their courses - data should be put in data as json file
-people = [
-  {"name": "Jon Doe", "courses": ["math1", "pSciComp", "physics1"]},
-  {"name": "Leonardo Da Vinci", "courses": ["math99", "cosmology7"]},
-  {"name": "Mona Lisa", "courses": ["linalg3", "pSciComp"]},
-]
+import json
+
+# Load the list of people from the external JSON file
+# PILLAR: Data (the file content), Environment (the file path 'data/raw/people.json'), Code (open/json.load)
+with open('data/raw/people.json', 'r') as f:
+    people = json.load(f)
+
 # Course we are interested in - configuration to be put in config file as a json or yaml file
 course = 'pSciComp'
 # Declaration of the list to store greetings - Code
