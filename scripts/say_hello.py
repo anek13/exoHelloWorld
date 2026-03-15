@@ -1,14 +1,15 @@
 """
 This script reads a list of people and their courses, and writes a greeting for each person who is taking a specific course to a text file.
 """
+import os
 from exohw.utils import load_json_file
 from types import SimpleNamespace
 
-# Load the list of people using the reusable function
-people = load_json_file('../../data/raw/people.json')
+# Load the list of people using the reusable function (Path from project root)
+people = load_json_file('data/raw/people.json')
 
-# Load the configuration data using the reusable function
-config_data = load_json_file('../../config/config.json')
+# Load the configuration data using the reusable function (Path from project root)
+config_data = load_json_file('config/config.json')
 
 # Parametrise JSON keys and variables using SimpleNamespace
 cfg = SimpleNamespace(**config_data)
@@ -27,8 +28,18 @@ for person in people:
         # cfg.name is the key ('name')
         greetings.append(f"Hello {person[cfg.name]}\n")
 
+# --- Pillar 1: Environment ---
+# Read the output directory from the environment variables
+output_dir = os.environ["OUTPUT_DIR"]
+
+# Combine the directory with the filename safely using os.path.join
+output_path = os.path.join(output_dir, 'greeting.txt')
+
+# Ensure the output directory exists before trying to write to it
+os.makedirs(output_dir, exist_ok=True)
+
 # Write the greetings to a text file
 # Code instruct to open the file, what file to open is environment, 'w' is configuration 
-with open('data/final/greeting.txt', 'w') as f:
+with open(output_path, 'w') as f:
     # Code
     f.writelines(greetings)
