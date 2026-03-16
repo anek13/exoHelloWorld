@@ -38,7 +38,7 @@ jobs:
       # 4. Build: Run the build command and pass the version argument
       - name: Build Container
         run: |
-          apptainer build \
+          apptainer build --fakeroot \
             --build-arg VERSION=${{ steps.version.outputs.version }} \
             env.sif containers/env.def
 
