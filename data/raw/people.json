@@ -1,5 +1,3 @@
-[
-  {"name": "Jon Doe", "courses": ["math1", "pSciComp", "physics1"]},
-  {"name": "Leonardo Da Vinci", "courses": ["math99", "cosmology7"]},
-  {"name": "Mona Lisa", "courses": ["linalg3", "pSciComp"]}
-]
+version https://git-lfs.github.com/spec/v1
+oid sha256:624c115d736e8cf67ded537dc4acb985dd445551e103e688fffd86d3ea986a40
+size 202
